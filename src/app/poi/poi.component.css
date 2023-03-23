@@ -1,0 +1,45 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+.container{
+background-color:cadetblue;
+border-radius: 5px;
+width: 90%;
+height: calc(100% - 100px);
+margin:5px auto;
+display: flex;
+align-items: center;
+}
+
+#map{
+    width: 50%;
+    height: 70%;
+    Border: red Solid 2px;
+}
+#map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .container{
+        Border: Green Solid 3px;
+        width: 100%;
+        flex-direction: column; 
+        align-items: center;
+        width: calc(100vw - 100px);
+        position: relative;
+    }
+ 
+    #map{
+        width: 70%;
+        height: 100%;
+  
+    }
+
+}
