@@ -1,10 +1,10 @@
 name: Deploy to VPS
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
-
+      - master
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
