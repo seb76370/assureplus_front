@@ -9,6 +9,8 @@ import { environments } from '../../environnements/env';
   styleUrls: ['./resultpoi.component.css'],
 })
 export class ResultpoiComponent implements OnInit {
+  value = 'Renseignez une ville';
+
   apiUrl = 'https://api.tomtom.com/search/2/categorySearch';
   datas: [] = [];
   latitude: number = 0;
@@ -46,6 +48,11 @@ export class ResultpoiComponent implements OnInit {
     const longitude:number = +item["position"]["lon"];
     location_gps_on_ggole_map(latitude,longitude)
   }
+
+  buttonclick(event:any) {
+    console.log(event._elementRef.nativeElement.id)
+ }
+
 }
 
 
