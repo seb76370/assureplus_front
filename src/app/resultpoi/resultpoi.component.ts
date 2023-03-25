@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FindpoiService } from '../findpoi.service';
-import {location_gps_on_ggole_map} from './script'
-import { environments } from '../../environnements/env'
+import { location_gps_on_ggole_map } from './script';
+import { environments } from '../../environnements/env';
 
 @Component({
   selector: 'app-resultpoi',
@@ -17,30 +17,25 @@ export class ResultpoiComponent implements OnInit {
 
   constructor(private findpoiService: FindpoiService) {}
   ngOnInit() {
+    location_gps_on_ggole_map()
+      .then((location) => {
+        this.latitude = location.latitude;
+        this.longitude = location.longitude;
 
-    location_gps_on_ggole_map().then((location) => {
-      this.latitude = location.latitude
-      this.longitude = location.longitude;
-
-      const places = this.findpoiService.localisation_poi(
-        this.api_key,
-        this.latitude,
-        this.longitude,
-        1000,
-        'REPAIR_FACILITY'
-      );
-      places.subscribe((datas: any) => {
-        this.datas = datas['results'];
-        console.log(this.datas);
-        
+        const places = this.findpoiService.localisation_poi(
+          this.api_key,
+          this.latitude,
+          this.longitude,
+          1000,
+          'REPAIR_FACILITY'
+        );
+        places.subscribe((datas: any) => {
+          this.datas = datas['results'];
+          console.log(this.datas);
+        });
+      })
+      .catch((error) => {
+        console.error(error);
       });
-
-    }).catch((error) => {
-      console.error(error);
-    });
-    
-
-
-
   }
 }
