@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PoiComponent } from './poi/poi.component';
+import { ResultpoiComponent } from './resultpoi/resultpoi.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: 'POI',component:PoiComponent},
@@ -20,9 +22,11 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     MainNavComponent,
-    PoiComponent
+    PoiComponent,
+    ResultpoiComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     LayoutModule,
     MatToolbarModule,
