@@ -12,7 +12,6 @@ import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PoiComponent } from './poi/poi.component';
 
-
 const routes: Routes = [
   {path: 'POI',component:PoiComponent},
 ]

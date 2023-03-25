@@ -29,7 +29,6 @@ align-items: center;
 
     .container{
         Border: Green Solid 3px;
-        width: 100%;
         flex-direction: column; 
         align-items: center;
         width: calc(100vw - 100px);

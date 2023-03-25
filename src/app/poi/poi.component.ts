@@ -18,15 +18,12 @@ export class PoiComponent  implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
 
-        const map = document.querySelector("#map iframe");
+        const map = document.querySelector("iframe");
        
         const url = `https://maps.google.com/maps?width=700&height=440&hl=en&q=${this.latitude} ${this.longitude}+(Titre)&ie=UTF8&t=&z=10&iwloc=B&output=embed`;
         if (map instanceof HTMLIFrameElement) {
           map.src = url;
         }
-  
-
-
       });
     } 
     else 
