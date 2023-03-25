@@ -1,12 +1,23 @@
-export function location_gps_on_ggole_map(): Promise<{latitude: number, longitude: number}> {
+export function location_gps_on_ggole_map(latitude:number = 0,longitude:number = 0): Promise<{latitude: number, longitude: number}> {
   return new Promise((resolve, reject) => {
-    let latitude = 0;
-    let longitude = 0;
+
+    console.log(latitude);
+    console.log(longitude);
+    
+
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-
+        if (latitude == 0)
+        {
+          latitude = position.coords.latitude;
+        }
+        if (longitude == 0)
+        {
+          longitude = position.coords.longitude;
+        }
+        console.log(latitude);
+        console.log(longitude);
         const map = document.querySelector("iframe");
         const url = `https://maps.google.com/maps?width=700&height=440&hl=en&q=${latitude} ${longitude}+(Titre)&ie=UTF8&t=&z=10&iwloc=B&output=embed`;
         if (map instanceof HTMLIFrameElement) {

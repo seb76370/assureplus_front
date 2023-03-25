@@ -11,6 +11,9 @@ table {
     font-size: 20px;
     width: 300px;
   }
+  tr:hover{
+    background-color: #9b78d6;
+  }
   
   th {
     background-color: #673AB7;

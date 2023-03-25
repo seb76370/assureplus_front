@@ -26,7 +26,7 @@ export class ResultpoiComponent implements OnInit {
           this.api_key,
           this.latitude,
           this.longitude,
-          1000,
+          20000,
           'REPAIR_FACILITY'
         );
         places.subscribe((datas: any) => {
@@ -38,4 +38,14 @@ export class ResultpoiComponent implements OnInit {
         console.error(error);
       });
   }
+
+  handleClick(item:any) 
+  {
+    // faire quelque chose avec l'élément de données cliqué
+    const latitude:number = +item["position"]["lat"];
+    const longitude:number = +item["position"]["lon"];
+    location_gps_on_ggole_map(latitude,longitude)
+  }
 }
+
+

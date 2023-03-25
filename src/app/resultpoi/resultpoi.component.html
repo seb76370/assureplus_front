@@ -4,13 +4,17 @@
         <th>Entreprise</th>
         <th>Adresse</th>
         <th>Téléphone</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of datas">
+      <tr *ngFor="let item of datas" (click)="handleClick(item)">
         <td>{{ item['poi']['name'] }}</td>
         <td>{{ item['poi']['phone'] }}</td>
         <td>{{ item["address"]["freeformAddress"] }}</td>
+        <td>{{ item["position"]["lat"] }}</td>
+        <td>{{ item["position"]["lon"] }}</td>
       </tr>
     </tbody>
   </table>
