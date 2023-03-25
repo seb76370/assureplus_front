@@ -16,8 +16,10 @@ import { PoiComponent } from './poi/poi.component';
 import { ResultpoiComponent } from './resultpoi/resultpoi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './map/map.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  {path: '',component:HomeComponent},
   {path: 'POI',component:PoiComponent},
 ]
 
@@ -27,7 +29,8 @@ const routes: Routes = [
     MainNavComponent,
     PoiComponent,
     ResultpoiComponent,
-    MapComponent
+    MapComponent,
+    HomeComponent
   ],
   imports: [
     FormsModule,

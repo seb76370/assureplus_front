@@ -1,0 +1,38 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+.container {
+    background-color:cadetblue;
+    border-radius: 5px;
+    min-height: 900px;
+    width: 95%;
+  height: 90%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+}
+
+.sub__container{
+    padding: 0 5px;
+    width: 95%;
+    min-width: 200px;
+    height: 45%;
+}
+.container_presentation{
+    Border: Green Solid 1px;
+    border-radius: 5px;
+}
+.container_form{
+    Border: Green Solid 1px;
+    border-radius: 5px;
+}
+
+
