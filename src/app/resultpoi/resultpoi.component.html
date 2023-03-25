@@ -1,0 +1,17 @@
+<table>
+    <thead>
+      <tr>
+        <th>Entreprise</th>
+        <th>Adresse</th>
+        <th>Téléphone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of datas">
+        <td>{{ item['poi']['name'] }}</td>
+        <td>{{ item['poi']['phone'] }}</td>
+        <td>{{ item["address"]["freeformAddress"] }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
