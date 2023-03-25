@@ -1,4 +1,10 @@
-<table>
+<div class="container">
+<div class="rechercheville">
+  <input matInput type="text" [(ngModel)]="value">
+  <button mat-button #test color="primary" id="test1" (click)="buttonclick(test)">Recherche</button>
+</div>
+
+  <table>
     <thead>
       <tr>
         <th>Entreprise</th>
@@ -10,12 +16,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of datas" (click)="handleClick(item)">
-        <td>{{ item['poi']['name'] }}</td>
-        <td>{{ item['poi']['phone'] }}</td>
+        <td>{{ item["poi"]["name"] }}</td>
+        <td>{{ item["poi"]["phone"] }}</td>
         <td>{{ item["address"]["freeformAddress"] }}</td>
         <td *ngIf="showCell">{{ item["position"]["lat"] }}</td>
         <td *ngIf="showCell">{{ item["position"]["lon"] }}</td>
       </tr>
     </tbody>
   </table>
-  
+</div>

@@ -1,3 +1,14 @@
+.container{
+
+display: flex;
+flex-direction: column;
+
+}
+
+.rechercheville{
+  display:none;
+}
+
 table {
     border-collapse: collapse;
     font-family: Arial, sans-serif;
@@ -26,3 +37,10 @@ table {
     text-align: center;
   }
   
+  @media screen and (max-width: 900px) {
+
+    th,td {
+      font-size: 12px;
+    }
+
+    }
