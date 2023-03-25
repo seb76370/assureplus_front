@@ -4,8 +4,8 @@
         <th>Entreprise</th>
         <th>Adresse</th>
         <th>Téléphone</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
+        <th *ngIf="showCell">Latitude</th>
+        <th *ngIf="showCell">Longitude</th>
       </tr>
     </thead>
     <tbody>
@@ -13,8 +13,8 @@
         <td>{{ item['poi']['name'] }}</td>
         <td>{{ item['poi']['phone'] }}</td>
         <td>{{ item["address"]["freeformAddress"] }}</td>
-        <td>{{ item["position"]["lat"] }}</td>
-        <td>{{ item["position"]["lon"] }}</td>
+        <td *ngIf="showCell">{{ item["position"]["lat"] }}</td>
+        <td *ngIf="showCell">{{ item["position"]["lon"] }}</td>
       </tr>
     </tbody>
   </table>

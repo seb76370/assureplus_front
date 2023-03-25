@@ -14,7 +14,7 @@ export class ResultpoiComponent implements OnInit {
   latitude: number = 0;
   longitude: number = 0;
   api_key: string = environments.apiKey;
-
+  showCell:boolean = false;
   constructor(private findpoiService: FindpoiService) {}
   ngOnInit() {
     location_gps_on_ggole_map()
@@ -26,7 +26,7 @@ export class ResultpoiComponent implements OnInit {
           this.api_key,
           this.latitude,
           this.longitude,
-          20000,
+          10000,
           'REPAIR_FACILITY'
         );
         places.subscribe((datas: any) => {

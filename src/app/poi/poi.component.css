@@ -30,7 +30,6 @@ gap:20px;
     width: 45%;
     display: flex;
     justify-content:center;
-    overflow-y:scroll;
 }
 
 .container__map iframe{
