@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule, Routes, Router} from '@angular/router'
+import {RouterModule, Routes} from '@angular/router'
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +17,9 @@ import { ResultpoiComponent } from './resultpoi/resultpoi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home/home.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -30,9 +33,13 @@ const routes: Routes = [
     PoiComponent,
     ResultpoiComponent,
     MapComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
     FormsModule,
     MatInputModule,
     HttpClientModule,

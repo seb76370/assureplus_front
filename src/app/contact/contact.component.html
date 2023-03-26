@@ -1,0 +1,71 @@
+<section>
+    <div class="container">
+      <h1 class="title">Contactez Nous !</h1>
+    </div>
+</section>
+
+<section>
+  <div class="section">
+    <div class="container">
+      <form class="contact-form" (ngSubmit)="submitForm()">
+        <div class="contact-form input">
+          <mat-form-field appearance="fill" class="contact-field">
+            <mat-label>Nom</mat-label>
+            <input
+              matInput
+              placeholder="Entrez votre nom"
+              name="name"
+              [(ngModel)]="name"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="contact-field">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              placeholder="Entrez votre email"
+              name="email"
+              [(ngModel)]="email"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="contact-field">
+            <mat-label>Téléphone</mat-label>
+            <input
+              matInput
+              type="tel"
+              placeholder="Entrez votre téléphone"
+              name="phone"
+              [(ngModel)]="phone"
+              required
+            />
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            class="contact-submit"
+          >
+            Envoyer
+          </button>
+        </div>
+        <div class="contact-form message">
+          <mat-form-field appearance="fill" class="contact-message">
+            <mat-label>Message</mat-label>
+            <textarea
+              matInput
+              placeholder="Entrez votre message"
+              name="message"
+              [(ngModel)]="message"
+              required
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
