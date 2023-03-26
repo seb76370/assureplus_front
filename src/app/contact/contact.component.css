@@ -12,8 +12,14 @@ textarea{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
+
+
+    .contact-form .input mat-form-field{
+        width: 30%;
+        font-size: 10px;
+    }
+
 .contact-form .message{
     width: 100%;
 
