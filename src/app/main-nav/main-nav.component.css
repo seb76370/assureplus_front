@@ -16,12 +16,12 @@
   z-index: 1;
 }
 
-.logo{
+.logo {
   height: 50px;
   border-radius: 10%;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,9 +29,14 @@
   height: 100%;
 }
 
+.main__container {
+    border-radius: 5px;
+    min-height: 900px;
+    width: 100%;
+}
 
 @media screen and (max-width: 700px) {
-  .header p{
+  .header p {
     display: none;
   }
 }
