@@ -21,6 +21,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ContactComponent } from './contact/contact.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ModalConnexionComponent } from './modal-connexion/modal-connexion.component';
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
     MapComponent,
     HomeComponent,
     ContactComponent,
+    ModalConnexionComponent,
   ],
   imports: [
     MatDialogModule,
