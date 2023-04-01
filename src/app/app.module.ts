@@ -20,12 +20,11 @@ import { HomeComponent } from './home/home.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ContactComponent } from './contact/contact.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
   {path: 'POI',component:PoiComponent},
-  {path: 'CONNEXION',component:ConnexionComponent},
 ]
 
 @NgModule({
@@ -37,9 +36,9 @@ const routes: Routes = [
     MapComponent,
     HomeComponent,
     ContactComponent,
-    ConnexionComponent
   ],
   imports: [
+    MatDialogModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
