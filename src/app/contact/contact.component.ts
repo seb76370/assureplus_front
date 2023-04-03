@@ -15,7 +15,6 @@ export class ContactComponent {
   message: string = "";
 
   submitForm() {
-
       const url = 'http://127.0.0.1:3000/test/';
       const formData = new FormData();
       formData.append('name', this.name);

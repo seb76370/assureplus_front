@@ -10,6 +10,7 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/">Acceuil</a>
+      <a  *ngIf="authService.is_connected " mat-list-item routerLink="/">Déclaration d'un sinistre</a>
       <a mat-list-item routerLink="/POI">Recherche Garage et Dépanneuse</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -28,15 +29,34 @@
         <span>{{ title }}</span>
         <p>Nous vous assurons 24/24</p>
         <button
-        routerLink="/CONNEXION"
-        mat-raised-button
-        color="primary"
-        type="submit"
-        class="contact-submit"
-      >
-        Connexion
-      </button>
+          *ngIf="!authService.is_connected "
+          (click)="openDialog()"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="contact-submit"
+        >
+          Login
+        </button>
+        <button
+          *ngIf="authService.is_connected"
+          (click)="authService.logout()"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="contact-submit"
+        >
+          Logout
+        </button>
 
+        <div class="userinfo">
+          <mat-label *ngIf="authService.is_connected ">Utilisateur : {{authService.username}}</mat-label>
+          <mat-label *ngIf="authService.is_connected ">Numéro de contrat : {{authService.contract_number}}</mat-label>
+        </div>
+
+        <!-- <div matBadge="4" matBadgeOverlap="false" class="demo-section">
+          Message
+        </div> -->
         <img
           class="logo"
           src="https://static.latribune.fr/1921791/comment-bien-choisir-son-assurance.jpg"

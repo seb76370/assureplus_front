@@ -21,6 +21,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ContactComponent } from './contact/contact.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ModalConnexionComponent } from './modal-connexion/modal-connexion.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { CookieService } from 'ngx-cookie-service';
+
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -36,8 +40,10 @@ const routes: Routes = [
     MapComponent,
     HomeComponent,
     ContactComponent,
+    ModalConnexionComponent,
   ],
   imports: [
+    MatBadgeModule,
     MatDialogModule,
     ReactiveFormsModule,
     MatSelectModule,
@@ -55,7 +61,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
