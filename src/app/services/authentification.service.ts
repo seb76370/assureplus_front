@@ -1,6 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
+import { catchError, tap, throwError } from 'rxjs';
+import { ModalInfoComponent } from '../modal-info/modal-info.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +13,12 @@ export class AuthentificationService {
   is_connected: boolean = false;
   username: string = '';
   contract_number: string = '';
+  messageinfo: string = '';
 
   constructor(
     private cookieService: CookieService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    public dialog: MatDialog) { }
 
 
   login(username:string, password:string) {
@@ -63,6 +68,13 @@ export class AuthentificationService {
       this.cookieService.delete('jwt')
       return response.json();
     })
+    .then(()=>{
+      this.messageinfo = "Vous êtes déconnecté";
+      this.dialog.open(ModalInfoComponent,{
+        width: '150px',
+        height: '100px',
+      });
+    })
   }
 
   Get_User_info() {
@@ -96,6 +108,32 @@ export class AuthentificationService {
           reject("not_connected");
         });
     });
+  }
+
+  ResetPassword(Newpassword:string) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const body = {
+      "jwt": this.cookieService.get('jwt'),
+      "password": Newpassword
+    };
+    
+    // Make the HTTP request
+    this.http.post('http://localhost:8000/api/reset/', body, httpOptions)
+    .pipe(
+      tap(data => console.log('data',data))
+    )
+    .subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
+
+
+
   }
 
 }

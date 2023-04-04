@@ -7,6 +7,7 @@ import { ModalConnexionComponent } from '../modal-connexion/modal-connexion.comp
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { AuthentificationService } from '../services/authentification.service';
+import { ModalResetPasswordComponent } from '../modal-reset-password/modal-reset-password.component';
 
 
 @Component({
@@ -46,6 +47,14 @@ export class MainNavComponent implements OnInit {
   openDialog(): void 
   {
     this.dialog.open(ModalConnexionComponent,{
+      width: '350px',
+      height: '250px',
+    });
+  }
+
+  openReset(): void 
+  {
+    this.dialog.open(ModalResetPasswordComponent,{
       width: '350px',
       height: '250px',
     });

@@ -24,6 +24,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ModalConnexionComponent } from './modal-connexion/modal-connexion.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CookieService } from 'ngx-cookie-service';
+import { ModalResetPasswordComponent } from './modal-reset-password/modal-reset-password.component';
+import { ModalInfoComponent } from './modal-info/modal-info.component';
 
 
 const routes: Routes = [
@@ -41,6 +43,8 @@ const routes: Routes = [
     HomeComponent,
     ContactComponent,
     ModalConnexionComponent,
+    ModalResetPasswordComponent,
+    ModalInfoComponent,
   ],
   imports: [
     MatBadgeModule,

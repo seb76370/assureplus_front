@@ -23,6 +23,7 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
       >
+
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <div class="header">
@@ -47,6 +48,17 @@
           class="contact-submit"
         >
           Logout
+        </button>
+
+        <button
+          *ngIf="authService.is_connected"
+          (click)="openReset()"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="contact-submit"
+        >
+          ResetPassword
         </button>
 
         <div class="userinfo">
