@@ -2,26 +2,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
-import { catchError, tap, throwError } from 'rxjs';
+import { tap } from 'rxjs';
 import { ModalInfoComponent } from '../modal-info/modal-info.component';
+import { userInterface } from '../interface/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthentificationService {
-
   is_connected: boolean = false;
   username: string = '';
-  contract_number: string = '';
-  messageinfo: string = '';
+  contract_number: number = 0;
 
   constructor(
     private cookieService: CookieService,
     private http: HttpClient,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog
+  ) {}
 
-
-  login(username:string, password:string) {
+  login(username: string, password: string) {
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -54,30 +53,30 @@ export class AuthentificationService {
   }
 
   logout(): void {
-    console.log("logout");  
+    console.log('logout');
     let requestOptions: any = {
       method: 'POST',
       redirect: 'follow',
     };
 
     fetch('http://127.0.0.1:8000/api/logout/', requestOptions)
-    .then((response) => {
-      this.is_connected = false;
-      this.username = '';
-      this.contract_number = '';
-      this.cookieService.delete('jwt')
-      return response.json();
-    })
-    .then(()=>{
-      this.messageinfo = "Vous êtes déconnecté";
-      this.dialog.open(ModalInfoComponent,{
-        width: '150px',
-        height: '100px',
+      .then((response) => {
+        this.is_connected = false;
+        this.username = '';
+        this.contract_number = 0;
+        this.cookieService.delete('jwt');
+        return response.json();
+      })
+      .then(() => {
+        this.dialog.open(ModalInfoComponent, {
+          data: { message: 'Vous êtes déconnecté' },
+          width: '250px',
+          height: '100px',
+        });
       });
-    })
   }
 
-  Get_User_info() {
+  Get_User_info(): Promise<userInterface> {
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -98,42 +97,35 @@ export class AuthentificationService {
           return response.json();
         })
         .then((data) => {
-           delete data['is_admin']
-          this.username = data['username']
-          this.contract_number = data['contract_number']
+          delete data['is_admin'];
+          this.username = data['username'];
+          this.contract_number = data['contract_number'];
           resolve(data);
-
         })
         .catch((err) => {
-          reject("not_connected");
+          reject('not_connected');
         });
     });
   }
 
-  ResetPassword(Newpassword:string) {
-
+  ResetPassword(Newpassword: string) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
+        'Content-Type': 'application/json',
+      }),
     };
     const body = {
-      "jwt": this.cookieService.get('jwt'),
-      "password": Newpassword
+      jwt: this.cookieService.get('jwt'),
+      password: Newpassword,
     };
-    
+
     // Make the HTTP request
-    this.http.post('http://localhost:8000/api/reset/', body, httpOptions)
-    .pipe(
-      tap(data => console.log('data',data))
-    )
-    .subscribe(
-      response => console.log(response),
-      error => console.log(error)
-    );
-
-
-
+    this.http
+      .post('http://localhost:8000/api/reset/', body, httpOptions)
+      .pipe(tap((data) => console.log('data', data)))
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
   }
-
 }

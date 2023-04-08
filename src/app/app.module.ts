@@ -26,11 +26,13 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { CookieService } from 'ngx-cookie-service';
 import { ModalResetPasswordComponent } from './modal-reset-password/modal-reset-password.component';
 import { ModalInfoComponent } from './modal-info/modal-info.component';
+import { SinistreComponent } from './sinistre/sinistre.component';
 
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
-  {path: 'POI',component:PoiComponent},
+  {path: 'poi',component:PoiComponent},
+  {path: 'sinistre',component:SinistreComponent},
 ]
 
 @NgModule({
@@ -45,6 +47,7 @@ const routes: Routes = [
     ModalConnexionComponent,
     ModalResetPasswordComponent,
     ModalInfoComponent,
+    SinistreComponent,
   ],
   imports: [
     MatBadgeModule,
