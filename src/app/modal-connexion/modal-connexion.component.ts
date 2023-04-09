@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { AuthentificationService } from '../services/authentification.service';
 import { ModalInfoComponent } from '../modal-info/modal-info.component';
-
+import { LoginInterface } from '../interface/login.interface';
 @Component({
   selector: 'app-modal-connexion',
   templateUrl: './modal-connexion.component.html',
@@ -16,7 +16,6 @@ export class ModalConnexionComponent {
   username: string = '';
   password: string = '';
   csrftoken: string = '';
-
 
   constructor(
     private fb: FormBuilder,
@@ -38,16 +37,28 @@ export class ModalConnexionComponent {
         this.loginForm.value['emailOrUsername'],
         this.loginForm.value['password']
       )
-      .then((data: any) => {
+      .then((data: LoginInterface) => {
         if (data.message === 'success') {
-          this.cookieService.set('jwt', data.jwt, 1);
-          this.authService.Get_User_info().then((data: any) => {
-            this.authService.is_connected = true;
-          });
+
+          if (data.jwt){
+            this.cookieService.set('jwt', data.jwt, 1);
+            this.authService.Get_User_info().then((data: any) => {
+              this.authService.is_connected = true;
+            });
+          }else
+          {
+            this.authService.is_connected = false;
+            this.dialog.open(ModalInfoComponent, {
+              data: { message: "Erreur d'authentification"},
+              width: '250px',
+              height: '100px',
+            });
+          }
         } else {
+         
           this.authService.is_connected = false;
           this.dialog.open(ModalInfoComponent, {
-            data:{"message": "Erreur de Login/mot de passe"},
+            data: { message: 'Erreur de Login/mot de passe' },
             width: '250px',
             height: '100px',
           });

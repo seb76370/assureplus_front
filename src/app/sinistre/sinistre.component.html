@@ -12,6 +12,10 @@
       <mat-label>Numéro de Contrat</mat-label>
       <input matInput formControlName="contract_number" readonly />
     </mat-form-field>
+    <mat-form-field class="user_fields">
+      <mat-label>id user</mat-label>
+      <input matInput formControlName="iduser" readonly />
+    </mat-form-field>
   </div>
 
   <div class="section_address">
@@ -52,7 +56,7 @@
   />
 
   <div class="file-upload">
-    {{ fileName || "No file uploaded yet." }}
+    {{ fileName || "Aucun fichier Sélectionné." }}
 
     <button
       mat-mini-fab
@@ -63,7 +67,6 @@
       <mat-icon>attach_file</mat-icon>
     </button>
   </div>
-
-  <button mat-raised-button color="primary">Envoyer</button>
+  <button mat-raised-button color="primary" (click)="save()" >Envoyer</button>
 </form>
-{{ sinistreForm.value | json }}
+<!-- {{ sinistreForm.value | json }} -->

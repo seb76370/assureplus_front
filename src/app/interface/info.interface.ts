@@ -1,3 +1,3 @@
-export interface InfoMessage{
+export interface InfoInterface{
     message:string
 }

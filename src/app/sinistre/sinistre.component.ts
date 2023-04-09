@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { AuthentificationService } from '../services/authentification.service';
+import { SinistreService} from '../services/sinistre.service';
 import { userInterface } from '../interface/user.interface';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +18,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SinistreComponent implements OnInit {
   fileName = '';
-  
 
   datas: userInterface = {} as userInterface;
   sinistreForm: FormGroup = this.fb.group({
@@ -27,12 +27,16 @@ export class SinistreComponent implements OnInit {
     zipcode: '',
     city: '',
     contract_number: '',
-    description: ''
+    description: '',
+    iduser: ''
   });
+
+  files!:FileList
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthentificationService,
+    private sinistreService: SinistreService,
     private router: Router,
     private http: HttpClient
   ) {}
@@ -51,6 +55,7 @@ export class SinistreComponent implements OnInit {
             zipcode: data.zipcode,
             city: data.city,
             contract_number: data.contract_number,
+            iduser:data.id
           });
         })
         .catch((error) => {
@@ -58,29 +63,37 @@ export class SinistreComponent implements OnInit {
         });
     } else {
       console.log("not connectedddd");
-      
       this.router.navigate(['']);
     }
+
   }
 
   onFileSelected(event: any) {
-
-    const files:FileList = event.target.files;
-    const formData = new FormData();
-    formData.append("sinistre", "2");
-    formData.append("title", "test");
-
-    if (files && files.length > 0) {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i]; 
-        formData.append("file", file); 
-      }
-
-      const upload$ = this.http.post("http://127.0.0.1:8000/upload_file/", formData);
-      upload$.subscribe();
-    }
+    this.files = event.target.files;
+    this.fileName = this.files.length + " fichiers Selectionnées"
   }
   
+
+save()
+{
+  const iduser = this.sinistreForm.get('iduser')?.value
+  const description = this.sinistreForm.get('description')?.value
+  if (iduser){
+
+    const sinistre = this.sinistreService.save_sinistre(iduser,description)
+    sinistre.subscribe((data:any)=>{
+
+      if (this.files && this.files.length > 0) {
+        console.log(this.files);
+        const upload = this.sinistreService.upload_files(data['id'], "sauvegarde sinistres",this.files)
+        upload.subscribe((data)=>{
+          console.log(data);
+          
+        })
+      }   
+    })
+  }
+}
 
 
 }

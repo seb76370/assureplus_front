@@ -41,8 +41,6 @@ export class MainNavComponent implements OnInit {
       this.authService
         .Get_User_info()
         .then((data: any) => {
-          console.log(typeof(data));
-
           if (data.json != 'not_connected') {
             this.authService.is_connected = true;
             this.authService.username = data.username;
