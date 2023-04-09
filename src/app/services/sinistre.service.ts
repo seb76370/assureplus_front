@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { environments } from '../../environnements/env';
+import { SinistreWriteInterface } from '../interface/sinistre.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,7 @@ export class SinistreService {
         formData.append('file', file);
       }
 
-      return this.http.post(
+      return this.http.post<SinistreWriteInterface>(
         'http://127.0.0.1:8000/upload_file/',
         formData
       );

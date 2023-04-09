@@ -28,10 +28,12 @@ import { ModalResetPasswordComponent } from './modal-reset-password/modal-reset-
 import { ModalInfoComponent } from './modal-info/modal-info.component';
 import { SinistreComponent } from './sinistre/sinistre.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { SuiviComponent } from './suivi/suivi.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'poi', component: PoiComponent },
+  { path: 'suivi', component: SuiviComponent },
   { path: 'sinistre', component: SinistreComponent },
 ];
 
@@ -48,6 +50,7 @@ const routes: Routes = [
     ModalResetPasswordComponent,
     ModalInfoComponent,
     SinistreComponent,
+    SuiviComponent,
   ],
   imports: [
     MatBadgeModule,

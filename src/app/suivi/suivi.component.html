@@ -1,0 +1,14 @@
+    <div >
+        <p>{{datas?.user_id}}</p>
+        <p>{{datas?.date_time}}</p>
+        <p>{{datas?.description}}</p>
+    </div>
+
+    <div *ngFor="let comment of datas?.comments; index as i; first as isFirst">
+        <p>{{comment?.comment}}</p>
+        <p>{{datas?.date_time}}</p>
+    </div>
+
+    <div *ngFor="let file of datas?.files; index as i; first as isFirst">
+        <img [src]="urlImage + 'image-attractive.jpg'"  alt="picture">
+    </div>

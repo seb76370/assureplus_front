@@ -11,6 +11,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/">🏠 Acceuil</a>
       <a  *ngIf="authService.is_connected " mat-list-item routerLink="/sinistre">📋 Sinistre</a>
+      <a  *ngIf="authService.is_connected " mat-list-item routerLink="/suivi">📋 Suivi</a>
       <a mat-list-item routerLink="/poi">🚗 Garage <br>et Dépanneuse</a>
 
     </mat-nav-list>
