@@ -29,6 +29,7 @@ import { ModalInfoComponent } from './modal-info/modal-info.component';
 import { SinistreComponent } from './sinistre/sinistre.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { SuiviComponent } from './suivi/suivi.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -69,6 +70,7 @@ const routes: Routes = [
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(routes),
   ],
   providers: [

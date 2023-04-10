@@ -15,6 +15,9 @@ export class AuthentificationService {
   username: string = '';
   contract_number: number = 0;
   env = environments
+
+  visibleSpinner: boolean = false;
+
   constructor(
     private cookieService: CookieService,
     private http: HttpClient,
@@ -23,6 +26,7 @@ export class AuthentificationService {
 
 
   login(username: string, password: string): Promise<any> {
+    this.visibleSpinner = true;
     const url = this.env.url + 'api/login/';
   
     const headers = new HttpHeaders({
@@ -34,7 +38,6 @@ export class AuthentificationService {
       password: password
     });
   
-    
     return new Promise((resolve, reject) => {
       this.http.post(url, body, { headers })
         .subscribe(
@@ -42,7 +45,7 @@ export class AuthentificationService {
             this.is_connected = true;
             resolve(data);
             console.log(data);
-            
+            this.visibleSpinner = false;
           },
           (err) => {
             this.is_connected = false;
@@ -53,7 +56,7 @@ export class AuthentificationService {
   }
 
   logout(): void {
-    console.log('logout');
+    this.visibleSpinner = true;
     let requestOptions: any = {
       method: 'POST',
       redirect: 'follow',
@@ -73,10 +76,12 @@ export class AuthentificationService {
           width: '250px',
           height: '100px',
         });
-      });
+      })
+      .then(()=> this.visibleSpinner = false);
   }
 
   Get_User_info(): Promise<userInterface> {
+    this.visibleSpinner = true;
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -105,6 +110,7 @@ export class AuthentificationService {
           this.contract_number = data['contract_number'];
           resolve(data);
         })
+        .then(()=> this.visibleSpinner = false)
         .catch((err) => {
           reject('not_connected');
         });

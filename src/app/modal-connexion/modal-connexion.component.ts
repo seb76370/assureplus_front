@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthentificationService } from '../services/authentification.service';
 import { ModalInfoComponent } from '../modal-info/modal-info.component';
 import { LoginInterface } from '../interface/login.interface';
+
 @Component({
   selector: 'app-modal-connexion',
   templateUrl: './modal-connexion.component.html',
@@ -23,7 +24,7 @@ export class ModalConnexionComponent {
     private cookieService: CookieService,
     private http: HttpClient,
     private authService: AuthentificationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
     this.loginForm = this.fb.group({
       emailOrUsername: ['', Validators.required],
@@ -32,6 +33,7 @@ export class ModalConnexionComponent {
   }
 
   onSubmit() {
+
     this.authService
       .login(
         this.loginForm.value['emailOrUsername'],
