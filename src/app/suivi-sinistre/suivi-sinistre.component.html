@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+    <p>
+      <b>Suivi du : {{ datas.date_time | date : "full" }}</b>
+    </p>
+    <p>{{ datas.description }}</p>
+
+    <div class="slide_img">
+      <div *ngFor="let picture of datas.files">
+        <img [src]="picture" alt="img" />
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="comments">
+      <div *ngFor="let comment of datas.comments">
+        <p>
+          <b>Date Du commentaires {{ comment.date_time }}</b>
+        </p>
+        <p>{{ comment.comment }}</p>
+        <br />
+      </div>
+    </div>
+  </mat-card>
+</div>

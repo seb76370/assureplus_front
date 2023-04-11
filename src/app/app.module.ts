@@ -30,12 +30,17 @@ import { SinistreComponent } from './sinistre/sinistre.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { SuiviComponent } from './suivi/suivi.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
+import { SuiviSinistreComponent } from './suivi-sinistre/suivi-sinistre.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'poi', component: PoiComponent },
+  { path: 'declaration', component: SinistreComponent },
   { path: 'suivi', component: SuiviComponent },
-  { path: 'sinistre', component: SinistreComponent },
 ];
 
 @NgModule({
@@ -52,8 +57,10 @@ const routes: Routes = [
     ModalInfoComponent,
     SinistreComponent,
     SuiviComponent,
+    SuiviSinistreComponent,
   ],
   imports: [
+    MatNativeDateModule,
     MatBadgeModule,
     MatDialogModule,
     ReactiveFormsModule,
@@ -71,9 +78,12 @@ const routes: Routes = [
     MatListModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatCardModule,
+    MatDividerModule,
     RouterModule.forRoot(routes),
   ],
   providers: [
+    {provide: MAT_DATE_FORMATS, useValue: 'fr-FR'},
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     CookieService,
   ],

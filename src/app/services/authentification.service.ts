@@ -13,7 +13,14 @@ import { environments } from '../../environnements/env';
 export class AuthentificationService {
   is_connected: boolean = false;
   username: string = '';
+  first_name: string = '';
+  last_name: string = '';
+  email: string = '';
+  street: string = '';
+  zipcode: string = '';
+  city: string = '';
   contract_number: number = 0;
+  phone_number: string = '';
   env = environments
 
   visibleSpinner: boolean = false;
@@ -101,13 +108,21 @@ export class AuthentificationService {
     return new Promise((resolve, reject) => {
 
       fetch(url, requestOptions)
-        .then((response) => {
+        .then((response) => {                 
           return response.json();
         })
         .then((data) => {
+
           delete data['is_admin'];
           this.username = data['username'];
+          this.first_name = data['first_name'];
+          this.last_name = data['last_name'];
+          this.email = data['email'];
+          this.street = data['street'];
+          this.zipcode = data['zipcode'];
+          this.city = data['city'];
           this.contract_number = data['contract_number'];
+          this.phone_number = "06xxxxxxxx";
           resolve(data);
         })
         .then(()=> this.visibleSpinner = false)
