@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthentificationService } from '../services/authentification.service';
 import { ModalResetPasswordComponent } from '../modal-reset-password/modal-reset-password.component';
 import { Router } from '@angular/router';
+import { AuthInterface } from '../interface/auth.interface';
 
 
 @Component({
@@ -39,12 +40,12 @@ export class MainNavComponent implements OnInit {
   ngOnInit() {
 
     if (this.cookieService.get('jwt')) {
-
       this.authService
         .Get_User_info()
         .then((data: any) => {
-         
-          if (data.json != 'not_connected') {
+          console.log(data);
+          
+          if (data) {
             this.authService.is_connected = true;
             this.authService.username = data.username;
             this.authService.contract_number = data.contract_number;
@@ -56,6 +57,7 @@ export class MainNavComponent implements OnInit {
         .catch((err) => {
           console.log('not_connected');
           this.authService.is_connected = false;
+          this.authService.visibleSpinner = false
         });
     }
 

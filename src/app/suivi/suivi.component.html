@@ -1,26 +1,5 @@
 <div class="container">
-  <mat-card>
-    <mat-card-header>
-      <p><b>Utilisateur</b> : {{ authService.username }}</p>
-    </mat-card-header>
-    <mat-card-content>
-      <label><b>Nom</b> : {{ authService.first_name }}</label>
-      <label><b>Prénom</b> :{{ authService.last_name }}</label>
-      <label
-        ><b>Numéro de contrat</b> : {{ authService.contract_number }}</label
-      >
-    </mat-card-content>
-    <mat-card-content>
-      <label><b>Rue</b> : {{ authService.street }}</label>
-    </mat-card-content>
-    <mat-card-content>
-      <label><b>Code Postal</b> : {{ authService.zipcode }}</label>
-      <label><b>Ville</b> : {{ authService.city }}</label>
-    </mat-card-content>
-    <mat-card-content>
-      <label><b>Numéro de Téléphone</b> : {{ authService.phone_number }}</label>
-    </mat-card-content>
-  </mat-card>
+  <app-info-user></app-info-user>
 
     <div *ngFor="let id of sinitres_id">
       <app-suivi-sinistre [idSinistre]="id"></app-suivi-sinistre>

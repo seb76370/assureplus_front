@@ -1,0 +1,35 @@
+<form [formGroup]="infoUserForm">
+  <div class="section_user">
+    <mat-form-field class="user_fields">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="first_name" readonly />
+    </mat-form-field>
+    <mat-form-field class="user_fields">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="last_name" readonly />
+    </mat-form-field>
+    <mat-form-field class="user_fields">
+      <mat-label>Téléphone</mat-label>
+      <input matInput formControlName="phone_number" readonly />
+    </mat-form-field>
+    <mat-form-field class="user_fields">
+      <mat-label>Numéro de Contrat</mat-label>
+      <input matInput formControlName="contract_number" readonly />
+    </mat-form-field>
+  </div>
+
+  <div class="section_address">
+    <mat-form-field class="user_fields">
+      <mat-label>Rue</mat-label>
+      <input matInput formControlName="street" readonly />
+    </mat-form-field>
+    <mat-form-field class="user_fields">
+      <mat-label>Code Postal</mat-label>
+      <input matInput formControlName="zipcode" readonly />
+    </mat-form-field>
+    <mat-form-field class="user_fields">
+      <mat-label>Ville</mat-label>
+      <input matInput formControlName="city" readonly />
+    </mat-form-field>
+  </div>
+</form>

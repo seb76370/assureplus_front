@@ -12,6 +12,7 @@ import { environments } from '../../environnements/env';
 })
 export class AuthentificationService {
   is_connected: boolean = false;
+  id: string = '';
   username: string = '';
   first_name: string = '';
   last_name: string = '';
@@ -114,6 +115,7 @@ export class AuthentificationService {
         .then((data) => {
 
           delete data['is_admin'];
+          this.id = data['id'];
           this.username = data['username'];
           this.first_name = data['first_name'];
           this.last_name = data['last_name'];

@@ -21,3 +21,16 @@ mat-card-content{
     display: flex;
     gap: 30px;
 }
+
+app-info-user{
+  margin:10px;
+}
+
+.section_user{
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap:20px;
+
+}

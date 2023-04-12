@@ -59,13 +59,18 @@ export class ModalConnexionComponent {
         } else {
          
           this.authService.is_connected = false;
-          this.dialog.open(ModalInfoComponent, {
-            data: { message: 'Erreur de Login/mot de passe' },
-            width: '250px',
-            height: '100px',
-          });
+          this.SendMessageInfo('Erreur de Login/mot de passe')
         }
       });
     this.dialogRef.close();
+  }
+
+  SendMessageInfo(message:string)
+  {
+    this.dialog.open(ModalInfoComponent, {
+      data: { message: message },
+      width: '250px',
+      height: '100px',
+    });
   }
 }

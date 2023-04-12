@@ -34,6 +34,7 @@ import {MatCardModule} from '@angular/material/card';
 import { SuiviSinistreComponent } from './suivi-sinistre/suivi-sinistre.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
+import { InfoUserComponent } from './info-user/info-user.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
     SinistreComponent,
     SuiviComponent,
     SuiviSinistreComponent,
+    InfoUserComponent,
   ],
   imports: [
     MatNativeDateModule,
