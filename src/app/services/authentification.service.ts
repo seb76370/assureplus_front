@@ -147,13 +147,18 @@ export class AuthentificationService {
 
     const url = this.env.url + 'api/reset/';
 
-    // Make the HTTP request
-    this.http
-      .post(url, body, httpOptions)
-      .pipe(tap((data) => console.log('data', data)))
-      .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
-      );
+    //Make the HTTP request
+    // this.http
+    //   .post(url, body, httpOptions)
+    //   .pipe(tap((data) => console.log('data', data)))
+    //   .subscribe(
+    //     (response) => console.log(response),
+    //     (error) => console.log(error)
+    //   );
+
+    return this.http.post<Object>(url, body, httpOptions)
+  
+
+
   }
 }

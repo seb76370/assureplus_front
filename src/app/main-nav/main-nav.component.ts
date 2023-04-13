@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -43,15 +43,9 @@ export class MainNavComponent implements OnInit {
       this.authService
         .Get_User_info()
         .then((data: any) => {
-          console.log(data);
-          
-          if (data) {
             this.authService.is_connected = true;
             this.authService.username = data.username;
             this.authService.contract_number = data.contract_number;
-          }else{
-            this.authService.is_connected = false;
-          }
         })
         .then(()=> this.authService.visibleSpinner = false)
         .catch((err) => {
@@ -64,6 +58,13 @@ export class MainNavComponent implements OnInit {
       // 
 
   }
+
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // clearCookie(event: Event) {
+  //   this.cookieService.delete('jwt');
+  // }
+
 
   openDialog(): void {
 

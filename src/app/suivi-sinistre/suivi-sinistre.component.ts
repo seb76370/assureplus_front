@@ -11,6 +11,7 @@ export class SuiviSinistreComponent implements OnInit {
   idSinistre: any;
 
   datas: unsuiviInterface = {
+    id : 0,
     description: '',
     date_time: new Date(),
     files: [],
@@ -19,6 +20,7 @@ export class SuiviSinistreComponent implements OnInit {
 
   ngOnInit(): void {
     this.datas = {
+      id : this.idSinistre,
       description:'vfnrekjhfvnbrelkifvnhbelvfhnerbfezklbfezlfbzefejfebznfnezbfezlfkeb',
       date_time: new Date(),
       files: ['assets/assur1.jpg', 'assets/assur2.jpg','assets/assur1.jpg', 'assets/assur2.jpg',],
@@ -32,4 +34,14 @@ export class SuiviSinistreComponent implements OnInit {
     ]
     };
   }
+
+  add_comment(id:number){
+
+    this.datas.comments.push({
+      comment:"commentaires 5555",
+      date_time:new Date()
+    })
+
+  }
+
 }
