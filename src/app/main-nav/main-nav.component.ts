@@ -1,15 +1,16 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConnexionComponent } from '../modal-connexion/modal-connexion.component';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthentificationService } from '../services/authentification.service';
 import { ModalResetPasswordComponent } from '../modal-reset-password/modal-reset-password.component';
 import { Router } from '@angular/router';
 import { AuthInterface } from '../interface/auth.interface';
+import { SinistreService } from '../services/sinistre.service';
 
 
 @Component({
@@ -34,10 +35,12 @@ export class MainNavComponent implements OnInit {
     private cookieService: CookieService,
     private http: HttpClient,
     public authService: AuthentificationService,
+    public sinistreService: SinistreService,
     private router: Router
   ) {}
 
   ngOnInit() {
+
 
     if (this.cookieService.get('jwt')) {
       this.authService

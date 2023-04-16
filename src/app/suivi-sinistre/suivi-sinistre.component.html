@@ -1,19 +1,19 @@
 <div class="container">
   <mat-card >
     <p>
-      <b>Suivi du : {{ datas.date_time | date : "full" }}</b>
+      <b>Suivi du : {{ sinistre.date_time | date : "full" }}</b>
     </p>
-    <p>{{ datas.description }}</p>
+    <p>{{ sinistre.description }}</p>
 
     <div class="slide_img">
-      <div *ngFor="let picture of datas.files">
-        <img [src]="picture" alt="img" />
+      <div *ngFor="let picture of sinistre.files">
+        <img [src]="picture.file" alt="img" />
       </div>
     </div>
     <br />
     <br />
     <div class="comments">
-      <div *ngFor="let comment of datas.comments">
+      <div *ngFor="let comment of sinistre.comments">
         <p>
           <b>Date Du commentaires {{ comment.date_time }}</b>
         </p>
@@ -23,7 +23,7 @@
     </div>
 
     <button
-    (click)="add_comment(datas.id)"
+    (click)="add_comment(sinistre.id)"
     mat-raised-button
     color="primary"
     type="submit"
