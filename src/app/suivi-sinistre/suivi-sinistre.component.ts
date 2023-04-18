@@ -1,16 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { unsuiviInterface } from '../interface/unsuivi.interface';
-import { sinistreInterface } from '../interface/sinistres_user.interface';
-
+import { commentInterface, sinistreInterface } from '../interface/sinistres_user.interface';
+import { environments } from 'src/environnements/env';
+import {SinistreService} from '../services/sinistre.service'
 @Component({
   selector: 'app-suivi-sinistre',
   templateUrl: './suivi-sinistre.component.html',
   styleUrls: ['./suivi-sinistre.component.css'],
 })
-export class SuiviSinistreComponent implements OnInit {
+export class SuiviSinistreComponent {
   @Input()
   sinistre !: sinistreInterface;
 
+constructor(private sinistreService: SinistreService){}
+
+
+  env = environments;
+  url = this.env.urlimg
+  newcomment:string = '';
   datas: unsuiviInterface = {
     id: 0,
     description: '',
@@ -20,14 +27,19 @@ export class SuiviSinistreComponent implements OnInit {
   };
 
 
-  ngOnInit(): void {
-    console.log(this.sinistre);   
-  }
 
   add_comment(id: number) {
-    this.datas.comments.push({
-      comment: 'commentaires 5555',
-      date_time: new Date(),
-    });
+    this.sinistreService.Addcomment(id,this.newcomment)
+    .subscribe((data:commentInterface)=> {
+     console.log(data);
+     
+      this.sinistre.comments.push({
+        id: data.id,
+        sinistre_id: data.sinistre_id,
+        comment: data.comment,
+        date_time: data.date_time
+      })
+
+    })
   }
 }

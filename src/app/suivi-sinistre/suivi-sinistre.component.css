@@ -18,6 +18,10 @@ button{
   width: 250px;
 }
 
+p{
+  white-space: pre-wrap;
+}
+
 mat-card {
     padding:10px;
     /* background-color: red; */

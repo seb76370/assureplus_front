@@ -37,9 +37,10 @@ export class SinistreService {
       const file = files[i];
       formData.append('file', file);
     }
-
+    const url = this.env.url + 'upload_file/';
     return this.http.post<SinistreWriteInterface>(
-      'http://127.0.0.1:8000/upload_file/',
+
+      url,
       formData
     );
   }
@@ -60,4 +61,20 @@ export class SinistreService {
     return this.http.get(url, requestOptions)
 
   }
+
+
+  Addcomment(id: number, comment:string):any {
+    const headers = new HttpHeaders({
+      'jwt': this.cookieService.get('jwt'),
+    });
+
+    const formData = new FormData();
+    formData.append('sinistre', '29');
+    formData.append('comment', comment);
+
+    const url = this.env.url + 'save_comment/';
+    return this.http.post(url, formData, { headers: headers })
+  }
+
+
 }

@@ -20,7 +20,7 @@ export interface sinistreInterface {
   files: filesInterface[];
 }
 
-interface commentInterface {
+export interface commentInterface {
   id: number;
   sinistre_id: number;
   comment: string;

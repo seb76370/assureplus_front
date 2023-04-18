@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card >
+  <mat-card>
     <p>
       <b>Suivi du : {{ sinistre.date_time | date : "full" }}</b>
     </p>
@@ -7,7 +7,7 @@
 
     <div class="slide_img">
       <div *ngFor="let picture of sinistre.files">
-        <img [src]="picture.file" alt="img" />
+        <img [src]="url + picture.file" alt="img" />
       </div>
     </div>
     <br />
@@ -23,13 +23,23 @@
     </div>
 
     <button
-    (click)="add_comment(sinistre.id)"
-    mat-raised-button
-    color="primary"
-    type="submit"
-    class="contact-submit"
-  >
-    Ajouter un commentaires
-  </button>
+      (click)="add_comment(sinistre.id)"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="contact-submit"
+    >
+      Ajouter un commentaires
+    </button>
+    <mat-form-field appearance="fill">
+      <mat-label>Commentaire</mat-label>
+      <textarea
+        matInput
+        placeholder="Entrez votre Commentaire"
+        name="message"
+        [(ngModel)]="newcomment"
+        required
+      ></textarea>
+    </mat-form-field>
   </mat-card>
 </div>

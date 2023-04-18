@@ -31,24 +31,37 @@ export class SuiviComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.visibleSpinner = true
-    this.sinistreService
-      .GetSinitres(7)
-      .subscribe((datas: sinistre_UserInterface) => {
-        if (datas != undefined) {
-  
-          this.datas.id = datas.id;
-          this.datas.first_name = datas.first_name
-          this.datas.last_name = datas.last_name
-          this.datas.street = datas.street
-          this.datas.zipcode = datas.zipcode
-          this.datas.city = datas.city
-          this.datas.date_time = datas.date_time
-          this.datas.contract_number = datas.contract_number
-          this.datas.sinistres = datas.sinistres
-          this.number_sinistres = datas.sinistres.length;
-        }
 
-      });
+    this.authService.Get_User_info()
+    .then((data: any) => {
+      this.get_sinistres(data.id)
+    });
+    
+
+    
+  }
+
+
+  get_sinistres(id:number)
+  {
+    this.sinistreService
+    .GetSinitres(id)
+    .subscribe((datas: sinistre_UserInterface) => {
+      if (datas != undefined) {
+
+        this.datas.id = datas.id;
+        this.datas.first_name = datas.first_name
+        this.datas.last_name = datas.last_name
+        this.datas.street = datas.street
+        this.datas.zipcode = datas.zipcode
+        this.datas.city = datas.city
+        this.datas.date_time = datas.date_time
+        this.datas.contract_number = datas.contract_number
+        this.datas.sinistres = datas.sinistres
+        this.number_sinistres = datas.sinistres.length;
+      }
+
+    });
   }
 
   updatespinner(){

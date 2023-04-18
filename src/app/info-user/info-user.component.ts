@@ -37,6 +37,26 @@ export class InfoUserComponent implements OnInit {
         contract_number: this.authService.contract_number,
         phone_number: this.authService.phone_number,
       });
+    }else
+    {
+      this.authService.Get_User_info()
+      .then((data: any) => {
+        this.set_user(data)
+      });
     }
   }
+
+
+  set_user(data: any){
+    this.infoUserForm.patchValue({
+      first_name: data.first_name,
+      last_name: data.last_name,
+      street: data.street,
+      zipcode: data.zipcode,
+      city: data.city,
+      contract_number: data.contract_number,
+      phone_number: data.phone_number,
+    });
+  }
+
 }
