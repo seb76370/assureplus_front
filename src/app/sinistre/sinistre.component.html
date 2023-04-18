@@ -1,0 +1,40 @@
+<form [formGroup]="sinistreForm">
+  
+  <app-info-user></app-info-user>
+
+  <div class="section_description">
+    <mat-form-field>
+      <textarea
+        matInput
+        name="Description"
+        cols="200"
+        rows="8"
+        placeholder="Décrivez les circonstances de l'accident"
+        formControlName="description"
+        required
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <input
+    type="file"
+    class="file-input"
+    (change)="onFileSelected($event)"
+    #fileUpload
+    multiple
+  />
+
+  <div class="file-upload">
+    {{ fileName || "Aucun fichier Sélectionné." }}
+
+    <button
+      mat-mini-fab
+      color="primary"
+      class="upload-btn"
+      (click)="fileUpload.click()"
+    >
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+  <button mat-raised-button color="primary" (click)="save()" >Envoyer</button>
+</form>

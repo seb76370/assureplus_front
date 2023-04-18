@@ -1,0 +1,13 @@
+.user_fields{
+    width: 30%;
+    font-size:0.8rem
+  }
+
+  .section_user{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap:20px;
+  
+  }

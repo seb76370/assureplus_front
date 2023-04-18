@@ -1,3 +1,5 @@
+<mat-spinner *ngIf="authService.visibleSpinner" ></mat-spinner>
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
@@ -9,9 +11,11 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Acceuil</a>
-      <a  *ngIf="authService.is_connected " mat-list-item routerLink="/">Déclaration d'un sinistre</a>
-      <a mat-list-item routerLink="/POI">Recherche Garage et Dépanneuse</a>
+      <a mat-list-item routerLink="/">🏠 Acceuil</a>
+      <a  *ngIf="authService.is_connected " mat-list-item routerLink="/declaration">📋 Déclarez <br>un sinsitre</a>
+      <a  *ngIf="authService.is_connected " mat-list-item routerLink="/suivi">📋 Suivi</a>
+      <a mat-list-item routerLink="/poi">🚗 Garage <br>et Dépanneuse</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -41,7 +45,7 @@
         </button>
         <button
           *ngIf="authService.is_connected"
-          (click)="authService.logout()"
+          (click)="logout()"
           mat-raised-button
           color="primary"
           type="submit"

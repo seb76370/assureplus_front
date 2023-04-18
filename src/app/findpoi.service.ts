@@ -15,7 +15,7 @@ export class FindpoiService {
 
   
     const url = `${apiUrl}/${type}.json?key=${api_key}&lat=${latitude}&lon=${longitude}&radius=${radius}`;
-    console.log(url);
+
     
     return this.http.get(url);
  

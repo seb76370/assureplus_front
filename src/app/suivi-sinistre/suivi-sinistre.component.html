@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card>
+    <p>
+      <b>Suivi du : {{ sinistre.date_time | date : "full" }}</b>
+    </p>
+    <p>{{ sinistre.description }}</p>
+
+    <div class="slide_img">
+      <div *ngFor="let picture of sinistre.files">
+        <img [src]="url + picture.file" alt="img" />
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="comments">
+      <div *ngFor="let comment of sinistre.comments">
+        <p>
+          <b>Date Du commentaires {{ comment.date_time }}</b>
+        </p>
+        <p>{{ comment.comment }}</p>
+        <br />
+      </div>
+    </div>
+
+    <button
+      (click)="add_comment(sinistre.id)"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="contact-submit"
+    >
+      Ajouter un commentaires
+    </button>
+    <mat-form-field appearance="fill">
+      <mat-label>Commentaire</mat-label>
+      <textarea
+        matInput
+        placeholder="Entrez votre Commentaire"
+        name="message"
+        [(ngModel)]="newcomment"
+        required
+      ></textarea>
+    </mat-form-field>
+  </mat-card>
+</div>

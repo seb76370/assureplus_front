@@ -1,0 +1,36 @@
+:host{
+    font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+    min-width: 1700px;
+}
+mat-card {
+  /* min-width: 1700px; */
+  width: 95%;
+  min-height: 150px;
+  margin: 10px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 5px 5px 5px rgb(43, 137, 226);
+}
+mat-card-content{
+    display: flex;
+    gap: 30px;
+}
+
+app-info-user{
+  margin:10px;
+}
+
+.section_user{
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap:20px;
+
+}

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthentificationService } from '../services/authentification.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {InfoInterface} from "../interface/info.interface"
 
 @Component({
   selector: 'app-modal-info',
@@ -8,9 +9,11 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./modal-info.component.css'],
 })
 export class ModalInfoComponent {
+
   constructor(
     public authService: AuthentificationService,
-    private dialogRef: MatDialogRef<ModalInfoComponent>
+    private dialogRef: MatDialogRef<ModalInfoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: InfoInterface,
   ) {}
 
   closeInfo() {

@@ -1,0 +1,10 @@
+<div class="container">
+  <app-info-user></app-info-user>
+
+    <div *ngFor="let s of datas.sinistres;">
+      <app-suivi-sinistre [sinistre]="s"></app-suivi-sinistre>
+      <br>
+      <br>
+      {{updatespinner()}}
+    </div>
+</div>
