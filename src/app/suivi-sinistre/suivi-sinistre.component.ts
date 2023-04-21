@@ -29,9 +29,11 @@ constructor(private sinistreService: SinistreService){}
 
 
   add_comment(id: number) {
+    console.log(id, this.newcomment);
+    
     this.sinistreService.Addcomment(id,this.newcomment)
     .subscribe((data:commentInterface)=> {
-     console.log(data);
+     console.log("datasss" , data);
      
       this.sinistre.comments.push({
         id: data.id,

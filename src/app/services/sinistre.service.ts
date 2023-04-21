@@ -69,7 +69,7 @@ export class SinistreService {
     });
 
     const formData = new FormData();
-    formData.append('sinistre', '29');
+    formData.append('sinistre', id.toString());
     formData.append('comment', comment);
 
     const url = this.env.url + 'save_comment/';
