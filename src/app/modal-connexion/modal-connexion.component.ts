@@ -17,6 +17,7 @@ export class ModalConnexionComponent {
   username: string = '';
   password: string = '';
   csrftoken: string = '';
+  is_admin:boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +47,7 @@ export class ModalConnexionComponent {
             this.cookieService.set('jwt', data.jwt, 1);
             this.authService.Get_User_info().then((data: any) => {
               this.authService.is_connected = true;
+              this.authService.is_admin = data.is_admin
             });
           }else
           {

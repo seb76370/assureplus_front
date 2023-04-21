@@ -8,4 +8,5 @@ export interface userInterface {
   city: string;
   street: string;
   contract_number: number;
+  is_admin:boolean;
 }

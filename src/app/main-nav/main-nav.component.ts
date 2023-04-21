@@ -47,10 +47,11 @@ export class MainNavComponent implements OnInit {
       this.authService
         .Get_User_info()
         .then((data: any) => {
+         
             this.authService.is_connected = true;
             this.authService.username = data.username;
             this.authService.contract_number = data.contract_number;
-            
+            this.authService.is_admin = data.is_admin
         })
         .then(()=> this.authService.visibleSpinner = false)
         .catch((err) => {
