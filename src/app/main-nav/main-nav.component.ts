@@ -21,6 +21,7 @@ import { SinistreService } from '../services/sinistre.service';
 export class MainNavComponent implements OnInit {
   title = 'Assure Plus';
   csrfToken: string = '';
+  is_admin:boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -49,6 +50,7 @@ export class MainNavComponent implements OnInit {
             this.authService.is_connected = true;
             this.authService.username = data.username;
             this.authService.contract_number = data.contract_number;
+            
         })
         .then(()=> this.authService.visibleSpinner = false)
         .catch((err) => {

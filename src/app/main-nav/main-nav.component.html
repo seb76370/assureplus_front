@@ -15,6 +15,7 @@
       <a  *ngIf="authService.is_connected " mat-list-item routerLink="/declaration">📋 Déclarez <br>un sinsitre</a>
       <a  *ngIf="authService.is_connected " mat-list-item routerLink="/suivi">📋 Suivi</a>
       <a mat-list-item routerLink="/poi">🚗 Garage <br>et Dépanneuse</a>
+      <a *ngIf="authService.is_admin" mat-list-item routerLink="/register">🛠️ register <br>et Dépanneuse</a>
 
     </mat-nav-list>
   </mat-sidenav>

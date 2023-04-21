@@ -35,6 +35,7 @@ import { SuiviSinistreComponent } from './suivi-sinistre/suivi-sinistre.componen
 import {MatDividerModule} from '@angular/material/divider';
 import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
 import { InfoUserComponent } from './info-user/info-user.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -60,6 +61,7 @@ const routes: Routes = [
     SuiviComponent,
     SuiviSinistreComponent,
     InfoUserComponent,
+    RegisterComponent,
   ],
   imports: [
     MatNativeDateModule,
