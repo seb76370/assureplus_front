@@ -74,6 +74,7 @@ export class SinistreService {
 
     const url = this.env.url + 'save_comment/';
     return this.http.post(url, formData, { headers: headers })
+    
   }
 
 
