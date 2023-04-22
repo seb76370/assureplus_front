@@ -45,7 +45,6 @@ export class MainNavComponent implements OnInit {
       const auth = this.authService.Get_User_info()
      
       auth.then((data: any) => {
-        alert("premier then");
         
           this.authService.is_connected = true;
           this.authService.username = data.username;
@@ -53,11 +52,11 @@ export class MainNavComponent implements OnInit {
           this.authService.is_admin = data.is_admin
       })
       .then(()=> {
-        alert("deuxieme then");
+
         this.authService.visibleSpinner = false
       })
       .catch((err) => {
-        alert("catch");
+
         console.log('erreur',err);
         this.authService.is_connected = false;
         this.authService.visibleSpinner = false;
