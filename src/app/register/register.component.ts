@@ -34,6 +34,7 @@ export class RegisterComponent {
   }
   
   submitForm(form: NgForm) {
+    
     let record_error:boolean =false;
 
     if (form.valid)
