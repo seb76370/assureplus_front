@@ -22,6 +22,7 @@ export class AuthentificationService {
   city: string = '';
   contract_number: number = 0;
   phone_number: string = '';
+  is_admin:boolean = false;
   env = environments
 
   visibleSpinner: boolean = false;
@@ -105,7 +106,8 @@ export class AuthentificationService {
     };
 
     const url = this.env.url + 'api/user/';
-
+    console.log("url",url);
+    
     return new Promise((resolve, reject) => {
 
       fetch(url, requestOptions)
@@ -113,8 +115,8 @@ export class AuthentificationService {
           return response.json();
         })
         .then((data) => {
-
-          delete data['is_admin'];
+          console.log("data",data);
+          // delete data['is_admin'];
           this.id = data['id'];
           this.username = data['username'];
           this.first_name = data['first_name'];
@@ -125,6 +127,7 @@ export class AuthentificationService {
           this.city = data['city'];
           this.contract_number = data['contract_number'];
           this.phone_number = "06xxxxxxxx";
+          this.is_admin = data['is_admin'];
           resolve(data);
         })
         .then(()=> this.visibleSpinner = false)

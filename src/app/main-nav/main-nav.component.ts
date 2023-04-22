@@ -41,33 +41,49 @@ export class MainNavComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
-
     if (this.cookieService.get('jwt')) {
-      this.authService
-        .Get_User_info()
-        .then((data: any) => {
-            this.authService.is_connected = true;
-            this.authService.username = data.username;
-            this.authService.contract_number = data.contract_number;
-            
-        })
-        .then(()=> this.authService.visibleSpinner = false)
-        .catch((err) => {
-          console.log('not_connected');
-          this.authService.is_connected = false;
-          this.authService.visibleSpinner = false
-        });
-    }
-
-      // 
-
+      const auth = this.authService.Get_User_info()
+     
+      auth.then((data: any) => {
+        alert("premier then");
+        
+          this.authService.is_connected = true;
+          this.authService.username = data.username;
+          this.authService.contract_number = data.contract_number;
+          this.authService.is_admin = data.is_admin
+      })
+      .then(()=> {
+        alert("deuxieme then");
+        this.authService.visibleSpinner = false
+      })
+      .catch((err) => {
+        alert("catch");
+        console.log('erreur',err);
+        this.authService.is_connected = false;
+        this.authService.visibleSpinner = false;
+        this.cookieService.delete('jwt');
+      });
+      }else
+      {
+        this.authService.is_connected = false;
+        this.authService.visibleSpinner = false;
+        this.cookieService.delete('jwt');
+      }
   }
 
 
   // @HostListener('window:beforeunload', ['$event'])
   // clearCookie(event: Event) {
-  //   this.cookieService.delete('jwt');
+  //   this.authService
+  //   .Get_User_info()
+  //   .then((data)=>{
+  //     alert(data);
+      
+  //   })
+  //   .catch((err) => {
+  //     alert( err)
+  //     this.cookieService.delete('jwt');
+  //   });
   // }
 
 

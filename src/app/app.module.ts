@@ -43,6 +43,7 @@ const routes: Routes = [
   { path: 'poi', component: PoiComponent },
   { path: 'declaration', component: SinistreComponent },
   { path: 'suivi', component: SuiviComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

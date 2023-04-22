@@ -1,1 +1,120 @@
-<p>register works!</p>
+<div class="container">
+  <form class="contact-form" #myForm="ngForm" (ngSubmit)="submitForm(myForm)">
+      <mat-form-field appearance="fill" class="contact-field">
+        <mat-label>Nom</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez votre nom"
+          name="first_name"
+          [(ngModel)]="first_name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-field">
+        <mat-label>Prenom</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez votre prenom"
+          name="last_name"
+          [(ngModel)]="last_name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-field">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="Entrez votre email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-field">
+        <mat-label>Téléphone</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez votre téléphone"
+          name="phone"
+          [(ngModel)]="phone_number"
+          pattern="[0-9]{10}"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-adress">
+        <mat-label>Rue</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez le nom de la rue"
+          name="street"
+          [(ngModel)]="street"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-adress">
+        <mat-label>code postal</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez le nom de la rue"
+          name="zipcode"
+          [(ngModel)]="zipcode"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-adress">
+        <mat-label>Ville</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez le nom de la rue"
+          name="city"
+          [(ngModel)]="city"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-adress">
+        <mat-label>Numéro de contrat</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Entrez le nom de la rue"
+          name="contract_number"
+          [(ngModel)]="contract_number"
+          readonly
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="contact-adress">
+        <mat-label>Mot de passe</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Entrez mot de passe"
+          name="password"
+          [(ngModel)]="password"
+        />
+      </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="contact-submit"
+    >
+      Envoyer
+    </button>
+  </form>
+</div>
