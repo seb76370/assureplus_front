@@ -1,6 +1,6 @@
 <div class="container">
   <app-info-user></app-info-user>
-  <mat-form-field appearance="fill">
+  <mat-form-field *ngIf="authService.is_admin" appearance="fill">
     <mat-label>Liste Client</mat-label>
     <mat-select (selectionChange)="OnUserChange($event)">>
       <mat-option *ngFor="let user of users" [value]="user.id">
