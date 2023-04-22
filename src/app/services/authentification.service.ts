@@ -126,7 +126,7 @@ export class AuthentificationService {
           this.zipcode = data['zipcode'];
           this.city = data['city'];
           this.contract_number = data['contract_number'];
-          this.phone_number = "06xxxxxxxx";
+          this.phone_number = data['phone_number'];
           this.is_admin = data['is_admin'];
           resolve(data);
         })
