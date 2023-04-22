@@ -3,6 +3,13 @@ import { AuthentificationService } from '../services/authentification.service';
 import { SinistreService } from '../services/sinistre.service';
 import { sinistreUserInterface } from '../interface/sinistresuser.interface';
 import { sinistre_UserInterface } from '../interface/sinistres_user.interface';
+import { MatSelectChange } from '@angular/material/select';
+
+
+interface user {
+  username: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-suivi',
@@ -24,6 +31,14 @@ export class SuiviComponent implements OnInit {
     contract_number: '',
     sinistres: [],
   };
+
+
+
+  users: user[] = [
+    {username: 'seb76', id: 7},
+    {username: 'Fabienne Baudet', id: 21},
+  ];
+
   constructor(
     public authService: AuthentificationService,
     public sinistreService: SinistreService
@@ -31,16 +46,20 @@ export class SuiviComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.visibleSpinner = true
-
     this.authService.Get_User_info()
     .then((data: any) => {
-      this.get_sinistres(data.id)
+      if (!this.authService.is_admin)
+      {
+        this.get_sinistres(data.id)
+      }
     });
-    
 
-    
   }
 
+
+  OnUserChange(event: MatSelectChange) {
+    this.get_sinistres(event.value)
+    }
 
   get_sinistres(id:number)
   {
